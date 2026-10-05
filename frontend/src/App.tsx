@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ArrowRight, Download, Github, Linkedin, Mail, MapPin, ExternalLink,
-  Cloud, Boxes, Workflow, ShieldCheck, Activity, Terminal, Database,
-  GitBranch, Server, Sparkles, CheckCircle2, Menu, X
+ ArrowRight, Download, Github, Linkedin, Mail, MapPin,
+Cloud, Boxes, Workflow, ShieldCheck, Activity, Terminal,
+Sparkles, CheckCircle2, Menu, X
 } from "lucide-react";
 import { useState } from "react";
 import { portfolio } from "./data/portfolio";
-import profileImage from "./assets/harish-profile.png";
+const profileImage = "src/assets/harish-profile.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -136,7 +136,7 @@ function App() {
 
         <section className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-white/10 bg-white/[.025] sm:grid-cols-3 lg:grid-cols-5">
-            {portfolio.stats.map(([value, label], i) => <div key={label} className="border-white/10 p-5 text-center sm:border-r last:border-r-0"><div className="text-2xl font-black text-white">{value}</div><div className="mt-1 text-xs text-slate-500">{label}</div></div>)}
+            {portfolio.stats.map(([value, label]) => <div key={label} className="border-white/10 p-5 text-center sm:border-r last:border-r-0"><div className="text-2xl font-black text-white">{value}</div><div className="mt-1 text-xs text-slate-500">{label}</div></div>)}
           </div>
         </section>
 
@@ -148,7 +148,7 @@ function App() {
           <motion.div id="skills" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={fadeUp}>
             <SectionTitle eyebrow="Toolbox" title="Core Skills" />
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {portfolio.skills.map((skill, i) => <motion.div whileHover={{ y: -5, scale: 1.02 }} transition={{ duration: .2 }} key={skill} className="rounded-xl border border-white/10 bg-white/[.035] px-4 py-3 text-sm font-semibold text-slate-200 shadow-lg shadow-black/10">{skill}</motion.div>)}
+              {portfolio.skills.map((skill) => <motion.div whileHover={{ y: -5, scale: 1.02 }} transition={{ duration: .2 }} key={skill} className="rounded-xl border border-white/10 bg-white/[.035] px-4 py-3 text-sm font-semibold text-slate-200 shadow-lg shadow-black/10">{skill}</motion.div>)}
             </div>
           </motion.div>
         </section>
@@ -156,7 +156,7 @@ function App() {
         <section id="experience" className="mx-auto max-w-7xl px-5 py-10 lg:px-8">
           <SectionTitle eyebrow="Career" title="Experience" />
           <div className="relative ml-3 border-l border-cyan-400/20 pl-8">
-            {portfolio.experience.map((job, i) => (
+            {portfolio.experience.map((job) => (
               <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={fadeUp} key={job.company} className="relative mb-12">
                 <span className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-[#020711] bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,.6)]"/>
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -172,7 +172,7 @@ function App() {
         <section id="projects" className="mx-auto max-w-7xl px-5 py-24 lg:px-8">
           <SectionTitle eyebrow="Selected Work" title="Featured Projects" />
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {portfolio.projects.map((project, i) => (
+            {portfolio.projects.map((project) => (
               <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={fadeUp} whileHover={{ y: -8 }} transition={{ duration: .25 }} key={project.title} className="group flex min-h-[270px] flex-col rounded-2xl border border-white/10 bg-gradient-to-br from-white/[.055] to-white/[.015] p-6 shadow-2xl shadow-black/10">
                 <div className="mb-5 flex items-start justify-between gap-3"><span className="rounded-full bg-cyan-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">{project.status}</span><Sparkles className="text-violet-400" size={18}/></div>
                 <h3 className="text-xl font-bold text-white">{project.title}</h3>
