@@ -41,6 +41,9 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Dependency vulnerability scan
+        run: npm audit --audit-level=high
+
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v2
         with:
